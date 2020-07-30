@@ -1,0 +1,18 @@
+<div *ngIf="(service.items$ | async).isLoading"> Loading ...</div>
+
+<div *ngIf="(service.items$ | async).isSuccessPersisted"> 
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Title</td>
+        </tr>
+        <tr *ngFor="let item of (service.items$ | async).data">
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="(service.items$ | async).isError">
+    <p> {{(service.items$ | async).errorMessage}}</p>
+</div>
